@@ -1,0 +1,23 @@
+<section class="section" id="mywork">
+    <h1 class="section-heading text-center mb-5 mt-4 black-text wow fadeIn" data-wow-delay="0.2s">My Work</h1>
+  <!-- <h1>My Work</h1> -->
+    <div class="row wow FadeIn" data-wow-delay="0.4s">
+      <div class="col-md-12">
+        <div id="mdb-lightbox-ui">
+          <div class="mdb-lightbox">
+
+            {% for img in images %}
+            <figure class="col-md-4">
+              <img src="{{img.image.url}}" alt="{{img.alt}}"
+              style="min-height: 300px;
+              max-height: 300px;
+              min-width: 100%;
+              max-width: 100%;">
+            </figure>
+            {% endfor %}
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+  
