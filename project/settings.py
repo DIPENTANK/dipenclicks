@@ -3,6 +3,8 @@
 from pathlib import Path
 import django_heroku
 import os
+
+
 # Build paths inside the project like this: BASE_DIR / 'subdir'.
 BASE_DIR = Path(__file__).resolve().parent.parent
 
@@ -18,6 +20,7 @@ DEBUG = False
 
 ALLOWED_HOSTS = ["dipenclicks.herokuapp.com", "localhost "]
 
+STATICFILES_STORAGE = 'whitenoise.django.GzipManifestStaticFilesStorage'
 
 # Application definition
 
@@ -69,7 +72,7 @@ WSGI_APPLICATION = 'project.wsgi.application'
 DATABASES = {
     'default': {
         'ENGINE': 'django.db.backends.sqlite3',
-        'NAME': BASE_DIR / 'db.sqlite3',
+        'NAME': os.path.join(BASE_DIR / 'db.sqlite3'),
     }
 }
 
@@ -111,8 +114,9 @@ USE_TZ = True
 # https://docs.djangoproject.com/en/3.2/howto/static-files/
 
 STATIC_URL = '/static/'
-STATICFILES_DIRS = [BASE_DIR / "static"]
-STATIC_ROOT = BASE_DIR / "static"
+STATIC_ROOT = os.path.join(BASE_DIR / "staticfiles")
+STATICFILES_DIRS = (os.path.join(BASE_DIR / "static"),)
+
 
 # Default primary key field type
 # https://docs.djangoproject.com/en/3.2/ref/settings/#default-auto-field
@@ -136,3 +140,16 @@ EMAIL_USE_TLS = True
 EMAIL_PORT = 587
 EMAIL_HOST_USER = "your mail"
 EMAIL_HOST_PASSWORD = "your password"
+
+
+
+#Cookie name. this can be whatever you want
+SESSION_COOKIE_NAME='sessionid'  # use the sessionid in your views code
+#the module to store sessions data
+SESSION_ENGINE='django.contrib.sessions.backends.db'
+#age of cookie in seconds (default: 2 weeks)
+SESSION_COOKIE_AGE= 24*60*60*7 # the number of seconds for only 7 for example
+#whether a user's session cookie expires when the web browser is closed
+SESSION_EXPIRE_AT_BROWSER_CLOSE=False
+#whether the session cookie should be secure (https:// only)
+SESSION_COOKIE_SECURE=False
