@@ -6,8 +6,8 @@ import os
 
 
 # Build paths inside the project like this: BASE_DIR / 'subdir'.
-BASE_DIR = Path(__file__).resolve().parent.parent
-
+BASE_DIR = Path(__file__).resolve(strict=True).parent.parent
+# django_heroku.settings(locals())
 
 # Quick-start development settings - unsuitable for production
 # See https://docs.djangoproject.com/en/3.2/howto/deployment/checklist/
@@ -143,13 +143,13 @@ EMAIL_HOST_PASSWORD = "your password"
 
 
 
-#Cookie name. this can be whatever you want
-SESSION_COOKIE_NAME='sessionid'  # use the sessionid in your views code
-#the module to store sessions data
-SESSION_ENGINE='django.contrib.sessions.backends.db'
-#age of cookie in seconds (default: 2 weeks)
-SESSION_COOKIE_AGE= 24*60*60*7 # the number of seconds for only 7 for example
-#whether a user's session cookie expires when the web browser is closed
-SESSION_EXPIRE_AT_BROWSER_CLOSE=False
-#whether the session cookie should be secure (https:// only)
-SESSION_COOKIE_SECURE=False
+# #Cookie name. this can be whatever you want
+# SESSION_COOKIE_NAME='sessionid'  # use the sessionid in your views code
+# #the module to store sessions data
+# SESSION_ENGINE='django.contrib.sessions.backends.db'
+# #age of cookie in seconds (default: 2 weeks)
+# SESSION_COOKIE_AGE= 24*60*60*7 # the number of seconds for only 7 for example
+# #whether a user's session cookie expires when the web browser is closed
+# SESSION_EXPIRE_AT_BROWSER_CLOSE=False
+# #whether the session cookie should be secure (https:// only)
+# SESSION_COOKIE_SECURE=False
